@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "TeleMedX",
+    "slug": "telemedicine-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#5E72E4"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.telemedx.app"
+    },
+    "android": {
+      "package": "com.telemedx.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#5E72E4"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

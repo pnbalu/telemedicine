@@ -1,0 +1,21 @@
+{
+  "name": "livekit-token-server",
+  "version": "1.0.0",
+  "description": "Token server from agent-starter-react (adapted for Express)",
+  "main": "connection-details.js",
+  "scripts": {
+    "start": "node connection-details.js",
+    "dev": "nodemon connection-details.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "livekit-server-sdk": "^2.13.2",
+    "@livekit/protocol": "^1.40.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
+
