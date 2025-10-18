@@ -15,6 +15,7 @@ import PatientSettings from './pages/patient/Settings'
 import AISymptomChecker from './pages/patient/AISymptomChecker'
 import PrescriptionTracking from './pages/patient/PrescriptionTracking'
 import AIAgentConsultation from './pages/patient/AIAgentConsultation'
+import PaymentScreen from './pages/patient/PaymentScreen'
 
 // Doctor pages
 import DoctorDashboard from './pages/doctor/DoctorDashboard'
@@ -64,6 +65,7 @@ function App() {
         <Route path="/patient/pharmacy" element={<Pharmacy />} />
         <Route path="/patient/ai-symptom-checker" element={<AISymptomChecker />} />
         <Route path="/ai-agent-consultation" element={<AIAgentConsultation />} />
+        <Route path="/patient/payments" element={<PaymentScreen />} />
         <Route path="/patient/settings" element={<PatientSettings />} />
         
         {/* Doctor routes */}

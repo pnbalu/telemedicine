@@ -18,7 +18,8 @@ import {
   Brain,
   Pill,
   DollarSign,
-  Bell
+  Bell,
+  CreditCard
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -40,6 +41,7 @@ export default function Sidebar({ role }: SidebarProps) {
     { icon: FileText, label: 'Prescriptions', path: '/patient/prescriptions' },
     { icon: Pill, label: 'Prescription Tracking', path: '/patient/prescription-tracking', highlight: true },
     { icon: ShoppingCart, label: 'Pharmacy', path: '/patient/pharmacy' },
+    { icon: CreditCard, label: 'Payments', path: '/patient/payments' },
     { icon: Settings, label: 'Settings', path: '/patient/settings' },
   ];
 

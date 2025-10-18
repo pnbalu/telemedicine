@@ -17,7 +17,8 @@ import {
   Calendar,
   Heart,
   Pill,
-  MapPin
+  MapPin,
+  CreditCard
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
@@ -60,7 +61,7 @@ export default function PatientDashboard() {
     { label: 'Upcoming', value: '3', change: '+1 this week', icon: CalendarDays, color: 'from-blue-500 to-cyan-500' },
     { label: 'Prescriptions', value: '5', change: '2 active', icon: FileText, color: 'from-purple-500 to-pink-500' },
     { label: 'Cart Items', value: '3', change: '$45 total', icon: ShoppingCart, color: 'from-rose-500 to-orange-500' },
-    { label: 'Health Score', value: 'Good', change: '85/100', icon: Activity, color: 'from-green-500 to-emerald-500' },
+    { label: 'Payments', value: '2', change: '$225 total', icon: CreditCard, color: 'from-indigo-500 to-purple-500' },
   ];
 
   // Mobile/Tablet View (existing)
@@ -93,7 +94,21 @@ export default function PatientDashboard() {
 
           <div className="grid grid-cols-2 gap-4">
             {stats.map((stat, index) => (
-              <Card key={index} className="border-0 shadow-lg hover-lift backdrop-blur-xl bg-white/80">
+              <Card 
+                key={index} 
+                className="border-0 shadow-lg hover-lift backdrop-blur-xl bg-white/80 cursor-pointer"
+                onClick={() => {
+                  if (stat.label === 'Payments') {
+                    navigate('/patient/payments');
+                  } else if (stat.label === 'Cart Items') {
+                    navigate('/patient/pharmacy');
+                  } else if (stat.label === 'Prescriptions') {
+                    navigate('/patient/prescriptions');
+                  } else if (stat.label === 'Upcoming') {
+                    navigate('/patient/book-appointment');
+                  }
+                }}
+              >
                 <CardContent className="p-4">
                   <div className="flex flex-col gap-2">
                     <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg`}>
@@ -155,7 +170,21 @@ export default function PatientDashboard() {
         {/* Stats Grid */}
         <div className="grid grid-cols-4 gap-6">
           {stats.map((stat, index) => (
-            <Card key={index} className="border-0 shadow-md hover:shadow-lg transition-shadow bg-white">
+            <Card 
+              key={index} 
+              className="border-0 shadow-md hover:shadow-lg transition-shadow bg-white cursor-pointer"
+              onClick={() => {
+                if (stat.label === 'Payments') {
+                  navigate('/patient/payments');
+                } else if (stat.label === 'Cart Items') {
+                  navigate('/patient/pharmacy');
+                } else if (stat.label === 'Prescriptions') {
+                  navigate('/patient/prescriptions');
+                } else if (stat.label === 'Upcoming') {
+                  navigate('/patient/book-appointment');
+                }
+              }}
+            >
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg`}>
