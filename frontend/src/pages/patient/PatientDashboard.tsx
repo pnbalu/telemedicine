@@ -18,7 +18,8 @@ import {
   Heart,
   Pill,
   MapPin,
-  CreditCard
+  CreditCard,
+  Brain
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
@@ -378,6 +379,7 @@ export default function PatientDashboard() {
                 {[
                   { icon: Calendar, label: 'Book Appointment', route: '/patient/book-appointment', color: 'from-blue-500 to-cyan-500' },
                   { icon: Activity, label: 'Medical Records', route: '/patient/medical-records', color: 'from-teal-500 to-green-500' },
+                  { icon: Brain, label: 'AI Symptom Checker', route: '/patient/ai-symptom-checker', color: 'from-purple-500 to-pink-500' },
                   { icon: ShoppingCart, label: 'Pharmacy', route: '/patient/pharmacy', color: 'from-rose-500 to-orange-500' },
                 ].map((action, idx) => {
                   const Icon = action.icon;
