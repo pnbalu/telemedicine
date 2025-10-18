@@ -11,9 +11,11 @@ import {
   Database,
   Key,
   Globe,
-  Save
+  Save,
+  Truck
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import DeliverySettingsPanel from '@/components/admin/DeliverySettings';
 
 export default function Settings() {
   const [activeTab, setActiveTab] = useState('email');
@@ -45,6 +47,7 @@ export default function Settings() {
     { id: 'email', label: 'Email', icon: Mail },
     { id: 'payments', label: 'Payments', icon: CreditCard },
     { id: 'security', label: 'Security', icon: Shield },
+    { id: 'delivery', label: 'Delivery', icon: Truck },
     { id: 'backup', label: 'Backup', icon: Database },
     { id: 'api', label: 'API', icon: Key },
     { id: 'platform', label: 'Platform', icon: Globe },
@@ -192,6 +195,9 @@ export default function Settings() {
             </div>
           </div>
         );
+
+      case 'delivery':
+        return <DeliverySettingsPanel />;
 
       case 'backup':
         return (
