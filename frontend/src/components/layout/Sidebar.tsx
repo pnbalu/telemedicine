@@ -19,7 +19,8 @@ import {
   Pill,
   DollarSign,
   Bell,
-  CreditCard
+  CreditCard,
+  HelpCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -39,9 +40,9 @@ export default function Sidebar({ role }: SidebarProps) {
     { icon: Calendar, label: 'Book Appointment', path: '/patient/book-appointment' },
     { icon: Activity, label: 'Medical Records', path: '/patient/medical-records' },
     { icon: FileText, label: 'Prescriptions', path: '/patient/prescriptions' },
-    { icon: Pill, label: 'Prescription Tracking', path: '/patient/prescription-tracking', highlight: true },
     { icon: ShoppingCart, label: 'Pharmacy', path: '/patient/pharmacy' },
     { icon: CreditCard, label: 'Payments', path: '/patient/payments' },
+    { icon: HelpCircle, label: 'Help & Support', path: '/help-support' },
     { icon: Settings, label: 'Settings', path: '/patient/settings' },
   ];
 

@@ -13,9 +13,9 @@ import MedicalRecords from './pages/patient/MedicalRecords'
 import Pharmacy from './pages/patient/Pharmacy'
 import PatientSettings from './pages/patient/Settings'
 import AISymptomChecker from './pages/patient/AISymptomChecker'
-import PrescriptionTracking from './pages/patient/PrescriptionTracking'
 import AIAgentConsultation from './pages/patient/AIAgentConsultation'
 import PaymentScreen from './pages/patient/PaymentScreen'
+import HelpSupport from './pages/HelpSupport'
 
 // Doctor pages
 import DoctorDashboard from './pages/doctor/DoctorDashboard'
@@ -60,13 +60,13 @@ function App() {
         <Route path="/patient/dashboard" element={<PatientDashboard />} />
         <Route path="/patient/book-appointment" element={<BookAppointment />} />
         <Route path="/patient/prescriptions" element={<Prescriptions />} />
-        <Route path="/patient/prescription-tracking" element={<PrescriptionTracking />} />
         <Route path="/patient/medical-records" element={<MedicalRecords />} />
         <Route path="/patient/pharmacy" element={<Pharmacy />} />
         <Route path="/patient/ai-symptom-checker" element={<AISymptomChecker />} />
         <Route path="/ai-agent-consultation" element={<AIAgentConsultation />} />
         <Route path="/patient/payments" element={<PaymentScreen />} />
         <Route path="/patient/settings" element={<PatientSettings />} />
+        <Route path="/help-support" element={<HelpSupport />} />
         
         {/* Doctor routes */}
         <Route path="/doctor/dashboard" element={<DoctorDashboard />} />

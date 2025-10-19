@@ -249,7 +249,7 @@ class VoiceAssistantService {
           text: 'Opening your prescriptions. You can view all your medications and refill requests here.',
           action: {
             type: 'navigate',
-            data: { route: '/patient/prescription-tracking' }
+            data: { route: '/patient/prescriptions' }
           }
         };
         break;

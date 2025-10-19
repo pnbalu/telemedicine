@@ -63,12 +63,6 @@ export interface AIUsageReport {
       triageLevels: Record<string, number>;
       topConditions: Array<{ condition: string; count: number }>;
     };
-    prescriptionTracking: {
-      activeUsers: number;
-      averageAdherence: number;
-      interactionsDetected: number;
-      remindersSet: number;
-    };
     aiTriage: {
       reviewedCases: number;
       approvedByDoctors: number;
@@ -262,12 +256,6 @@ class AnalyticsService {
             { condition: 'Migraine', count: 55 * multiplier }
           ]
         },
-        prescriptionTracking: {
-          activeUsers: 3200,
-          averageAdherence: 89.5,
-          interactionsDetected: 45,
-          remindersSet: 8500
-        },
         aiTriage: {
           reviewedCases: 380 * multiplier,
           approvedByDoctors: 315 * multiplier,
@@ -398,7 +386,7 @@ class AnalyticsService {
         {
           patientName: 'Michael R.',
           rating: 4,
-          comment: 'Great platform, prescription tracking is very useful.',
+          comment: 'Great platform, very user-friendly.',
           date: new Date(Date.now() - 259200000)
         }
       ]

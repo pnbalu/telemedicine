@@ -5,7 +5,7 @@ import TopBar from './TopBar';
 interface DesktopLayoutProps {
   role: 'patient' | 'doctor' | 'admin';
   userName: string;
-  breadcrumbs?: { label: string; path?: string }[];
+  breadcrumbs?: { label: string; path?: string; href?: string }[];
   children: React.ReactNode;
 }
 
