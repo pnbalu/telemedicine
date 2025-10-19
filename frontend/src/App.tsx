@@ -28,6 +28,15 @@ import DoctorConsultations from './pages/doctor/Consultations'
 import DoctorSettings from './pages/doctor/Settings'
 import AITriageReview from './pages/doctor/AITriageReview'
 
+// Nurse pages
+import NurseDashboard from './pages/nurse/NurseDashboard'
+import NursePatients from './pages/nurse/Patients'
+import NurseVitals from './pages/nurse/Vitals'
+import NurseMedications from './pages/nurse/Medications'
+import NurseNotes from './pages/nurse/Notes'
+import NurseSchedule from './pages/nurse/Schedule'
+import NurseSettings from './pages/nurse/Settings'
+
 // Admin pages
 import AdminDashboard from './pages/admin/AdminDashboard'
 import AdminUsers from './pages/admin/Users'
@@ -78,6 +87,15 @@ function App() {
         <Route path="/doctor/consultations" element={<DoctorConsultations />} />
         <Route path="/doctor/ai-triage" element={<AITriageReview />} />
         <Route path="/doctor/settings" element={<DoctorSettings />} />
+        
+        {/* Nurse routes */}
+        <Route path="/nurse/dashboard" element={<NurseDashboard />} />
+        <Route path="/nurse/patients" element={<NursePatients />} />
+        <Route path="/nurse/vitals" element={<NurseVitals />} />
+        <Route path="/nurse/medications" element={<NurseMedications />} />
+        <Route path="/nurse/notes" element={<NurseNotes />} />
+        <Route path="/nurse/schedule" element={<NurseSchedule />} />
+        <Route path="/nurse/settings" element={<NurseSettings />} />
         
         {/* Admin routes */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />

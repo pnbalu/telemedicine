@@ -9,6 +9,7 @@ import { Video, ArrowRight, Shield, Heart, Zap } from 'lucide-react';
 const DEMO_ACCOUNTS: Record<string, { password: string; role: string; name: string }> = {
   'patient@test.com': { password: 'test123', role: 'patient', name: 'John Doe' },
   'doctor@test.com': { password: 'test123', role: 'doctor', name: 'Dr. Alice Smith' },
+  'nurse@test.com': { password: 'test123', role: 'nurse', name: 'Nurse Sarah Johnson' },
   'admin@test.com': { password: 'test123', role: 'admin', name: 'Admin User' },
 };
 
@@ -36,6 +37,8 @@ export default function Login() {
       navigate('/patient/dashboard');
     } else if (account.role === 'doctor') {
       navigate('/doctor/dashboard');
+    } else if (account.role === 'nurse') {
+      navigate('/nurse/dashboard');
     } else if (account.role === 'admin') {
       navigate('/admin/dashboard');
     }
@@ -187,6 +190,7 @@ export default function Login() {
                     <div className="space-y-1 text-xs text-blue-800">
                       <p>👤 <strong>Patient:</strong> patient@test.com</p>
                       <p>⚕️ <strong>Doctor:</strong> doctor@test.com</p>
+                      <p>🩺 <strong>Nurse:</strong> nurse@test.com</p>
                       <p>🏥 <strong>Admin:</strong> admin@test.com</p>
                       <p className="text-blue-600 mt-2">🔑 Password: <strong>test123</strong></p>
                     </div>

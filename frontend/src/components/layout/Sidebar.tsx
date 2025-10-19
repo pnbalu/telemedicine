@@ -26,7 +26,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 interface SidebarProps {
-  role: 'patient' | 'doctor' | 'admin';
+  role: 'patient' | 'doctor' | 'nurse' | 'admin';
 }
 
 export default function Sidebar({ role }: SidebarProps) {
@@ -56,6 +56,16 @@ export default function Sidebar({ role }: SidebarProps) {
     { icon: Settings, label: 'Settings', path: '/doctor/settings' },
   ];
 
+  const nurseMenuItems = [
+    { icon: Home, label: 'Dashboard', path: '/nurse/dashboard' },
+    { icon: Users, label: 'Patients', path: '/nurse/patients' },
+    { icon: Activity, label: 'Vital Signs', path: '/nurse/vitals' },
+    { icon: Pill, label: 'Medications', path: '/nurse/medications' },
+    { icon: FileText, label: 'Nursing Notes', path: '/nurse/notes' },
+    { icon: Calendar, label: 'Schedule', path: '/nurse/schedule' },
+    { icon: Settings, label: 'Settings', path: '/nurse/settings' },
+  ];
+
   const adminMenuItems = [
     { icon: Home, label: 'Dashboard', path: '/admin/dashboard' },
     { icon: Users, label: 'Users', path: '/admin/users' },
@@ -73,16 +83,19 @@ export default function Sidebar({ role }: SidebarProps) {
   const menuItems = 
     role === 'patient' ? patientMenuItems :
     role === 'doctor' ? doctorMenuItems :
+    role === 'nurse' ? nurseMenuItems :
     adminMenuItems;
 
   const themeColor = 
     role === 'patient' ? 'from-blue-600 to-cyan-600' :
     role === 'doctor' ? 'from-teal-600 to-emerald-600' :
+    role === 'nurse' ? 'from-pink-600 to-rose-600' :
     'from-amber-600 to-orange-600';
 
   const brandIcon = 
     role === 'patient' ? Video :
     role === 'doctor' ? Stethoscope :
+    role === 'nurse' ? Activity :
     Shield;
 
   const BrandIcon = brandIcon;
