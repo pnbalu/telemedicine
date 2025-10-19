@@ -43,6 +43,8 @@ import AdminUsers from './pages/admin/Users'
 import AdminAnalytics from './pages/admin/Analytics'
 import AdminSystemHealth from './pages/admin/SystemHealth'
 import AdminSettings from './pages/admin/Settings'
+import AdminSetup from './pages/admin/Setup'
+import UserDetails from './pages/admin/UserDetails'
 import DoctorVerification from './pages/admin/DoctorVerification'
 import RevenueDashboard from './pages/admin/RevenueDashboard'
 import FraudDetection from './pages/admin/FraudDetection'
@@ -100,6 +102,7 @@ function App() {
         {/* Admin routes */}
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/users" element={<AdminUsers />} />
+        <Route path="/admin/user-details" element={<UserDetails />} />
         <Route path="/admin/analytics" element={<AdminAnalytics />} />
         <Route path="/admin/system-health" element={<AdminSystemHealth />} />
         <Route path="/admin/doctor-verification" element={<DoctorVerification />} />
@@ -109,6 +112,7 @@ function App() {
         <Route path="/admin/ai-reports" element={<AIReports />} />
         <Route path="/admin/notifications" element={<NotificationManagement />} />
         <Route path="/admin/settings" element={<AdminSettings />} />
+        <Route path="/admin/setup" element={<AdminSetup />} />
         
         {/* Shared routes */}
         <Route path="/video-call" element={<VideoConsultation />} />

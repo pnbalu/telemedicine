@@ -20,7 +20,8 @@ import {
   DollarSign,
   Bell,
   CreditCard,
-  HelpCircle
+  HelpCircle,
+  Wrench
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -68,6 +69,7 @@ export default function Sidebar({ role }: SidebarProps) {
 
   const adminMenuItems = [
     { icon: Home, label: 'Dashboard', path: '/admin/dashboard' },
+    { icon: Wrench, label: 'Setup & Config', path: '/admin/setup', highlight: true },
     { icon: Users, label: 'Users', path: '/admin/users' },
     { icon: Shield, label: 'Doctor Verification', path: '/admin/doctor-verification', highlight: true },
     { icon: BarChart3, label: 'Analytics', path: '/admin/analytics' },

@@ -12,13 +12,15 @@ import {
   Key,
   Globe,
   Save,
-  Truck
+  Truck,
+  Building2
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import DeliverySettingsPanel from '@/components/admin/DeliverySettings';
+import HospitalManagement from '@/components/admin/HospitalManagement';
 
 export default function Settings() {
-  const [activeTab, setActiveTab] = useState('email');
+  const [activeTab, setActiveTab] = useState('hospitals');
 
   const [emailSettings, setEmailSettings] = useState({
     smtpServer: 'smtp.telemedx.com',
@@ -44,6 +46,7 @@ export default function Settings() {
   });
 
   const tabs = [
+    { id: 'hospitals', label: 'Hospitals', icon: Building2 },
     { id: 'email', label: 'Email', icon: Mail },
     { id: 'payments', label: 'Payments', icon: CreditCard },
     { id: 'security', label: 'Security', icon: Shield },
@@ -55,6 +58,9 @@ export default function Settings() {
 
   const renderTabContent = () => {
     switch (activeTab) {
+      case 'hospitals':
+        return <HospitalManagement />;
+        
       case 'email':
         return (
           <div className="space-y-6">

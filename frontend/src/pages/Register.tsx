@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Video, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Video, ArrowRight, CheckCircle2, UserCheck, Mail } from 'lucide-react';
 
 export default function Register() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [isInviteLink, setIsInviteLink] = useState(false);
+  const [inviteInfo, setInviteInfo] = useState({
+    email: '',
+    role: 'patient',
+    valid: false
+  });
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -16,6 +24,42 @@ export default function Register() {
     confirmPassword: '',
     role: 'patient'
   });
+
+  useEffect(() => {
+    // Check if this is an invite link
+    const inviteToken = searchParams.get('invite');
+    const inviteEmail = searchParams.get('email');
+    const inviteRole = searchParams.get('role');
+
+    if (inviteToken && inviteEmail && inviteRole) {
+      try {
+        // Decode the token (in a real app, you'd validate this server-side)
+        const decoded = atob(inviteToken);
+        const [tokenEmail, tokenRole, timestamp] = decoded.split(':');
+        
+        // Check if the token is not too old (24 hours)
+        const tokenTime = parseInt(timestamp);
+        const now = Date.now();
+        const isValid = (now - tokenTime) < (24 * 60 * 60 * 1000);
+
+        if (isValid && tokenEmail === inviteEmail && tokenRole === inviteRole) {
+          setIsInviteLink(true);
+          setInviteInfo({
+            email: decodeURIComponent(inviteEmail),
+            role: inviteRole,
+            valid: true
+          });
+          setFormData(prev => ({
+            ...prev,
+            email: decodeURIComponent(inviteEmail),
+            role: inviteRole
+          }));
+        }
+      } catch (error) {
+        console.error('Invalid invite token:', error);
+      }
+    }
+  }, [searchParams]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,9 +127,31 @@ export default function Register() {
                 </div>
 
                 <div className="space-y-2 text-center lg:text-left">
-                  <h2 className="text-3xl font-bold text-gray-900">Create account</h2>
-                  <p className="text-gray-600">Get started with your free account</p>
+                  <h2 className="text-3xl font-bold text-gray-900">
+                    {isInviteLink ? 'Complete Your Registration' : 'Create account'}
+                  </h2>
+                  <p className="text-gray-600">
+                    {isInviteLink ? 'You\'ve been invited to join TeleMedX' : 'Get started with your free account'}
+                  </p>
                 </div>
+
+                {/* Invite Link Banner */}
+                {isInviteLink && inviteInfo.valid && (
+                  <div className="p-4 bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                        <UserCheck className="w-5 h-5 text-green-600" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-green-800">Welcome! You've been invited</h3>
+                        <p className="text-sm text-green-700">
+                          You're registering as a <strong>{inviteInfo.role}</strong> with email <strong>{inviteInfo.email}</strong>
+                        </p>
+                      </div>
+                      <Mail className="w-5 h-5 text-green-600" />
+                    </div>
+                  </div>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-2">
@@ -114,8 +180,9 @@ export default function Register() {
                         placeholder="you@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="h-11 px-4 bg-white/50 border-gray-200 focus:border-indigo-500"
+                        className={`h-11 px-4 border-gray-200 focus:border-indigo-500 ${isInviteLink ? 'bg-gray-100 cursor-not-allowed' : 'bg-white/50'}`}
                         required
+                        readOnly={isInviteLink}
                       />
                     </div>
 
@@ -173,12 +240,15 @@ export default function Register() {
                     </Label>
                     <select
                       id="role"
-                      className="flex h-11 w-full rounded-lg border border-gray-200 bg-white/50 px-4 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                      className={`flex h-11 w-full rounded-lg border border-gray-200 px-4 py-2 text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:outline-none ${isInviteLink ? 'bg-gray-100 cursor-not-allowed' : 'bg-white/50'}`}
                       value={formData.role}
                       onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                      disabled={isInviteLink}
                     >
                       <option value="patient">Patient</option>
                       <option value="doctor">Doctor</option>
+                      <option value="nurse">Nurse</option>
+                      <option value="admin">Admin</option>
                     </select>
                   </div>
 
